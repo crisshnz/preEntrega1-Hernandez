@@ -1,38 +1,41 @@
 /// proyecto barberia - "ticketera"
 
-const normalCut = 1;
-const combo2 = 2;
-const combo3 = 3;
+const hairCut = 1;
+const hairCutHighlights = 2;
+const hairCutDye = 3;
+const hairCutPrice = 1200;
+const hairCutHighlightsPrice = 4500;
+const hairCutDyePrice = 6000;
 
 let barberDate;
 let option;
 let quitMenu = false;
-let barberDateConfirm = console.log(
-  "¡Su cita se registró con exito! Gracias por confiar de nuevo en nosotros."
-);
-
+const barberDateConfirm = (totalPrice) => {
+  alert(
+    `¡Su cita se registró con exito! Gracias por confiar de nuevo en nosotros. El costo de su servicio será: $${totalPrice}`
+  );
+};
 alert("¡Bienvenido a Naribarber! A continuacion elija su servicio.");
 
 do {
   let option = parseInt(
     prompt(`Ingrese la opcion que desee: \n
-        1 - Corte de cabello. \n
-        2 - Tintura (Reflejos) + corte de cabello. \n
-        3 - Tintura (Global) + corte de cabello.
-`)
+        ${hairCut} - $${hairCutPrice} Corte de cabello. \n
+        ${hairCutHighlights} - $${hairCutHighlightsPrice} Tintura (Reflejos) + corte de cabello. \n
+        ${hairCutDye} - $${hairCutDyePrice} Tintura (Global) + corte de cabello.`)
   );
   switch (option) {
-    case normalCut:
-      barberDate = barberDateConfirm;
-      console.log("Corte normal");
+    case hairCut:
+      barberDateConfirm(`${hairCutPrice}`);
+      //  console.log("Corte de pelo");
       break;
-    case combo2:
-      barberDate = barberDateConfirm;
-      console.log("Combo 2");
+    case hairCutHighlights:
+      barberDateConfirm(`${hairCutHighlightsPrice}`);
+      //  console.log("Corte de pelo con reflejos");
       break;
-    case combo3:
-      barberDate = barberDateConfirm;
-      console.log("Combo 3");
+    case hairCutDye:
+      barberDateConfirm(`${hairCutDyePrice}`);
+      //  console.log("Corte de pelo + tintura global");
       break;
     default:
       alert("Su elección no es valida.");
